@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">News Feed</string>
+
+    <!-- Drawer Menu Strings-->
+    <string name="welcome">Welcome</string>
+    <string name="username">Tony Roshdy</string>
+
+    <string name="explore">Explore</string>
+    <string name="lifechat">Life Chat</string>
+    <string name="gallery">Gallery</string>
+    <string name="wishlist">Wish List</string>
+    <string name="emagazine">E-Magazine</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
