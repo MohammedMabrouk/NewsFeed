@@ -18,4 +18,7 @@
     <string name="server_err">Server Error</string>
     <string name="network_err">Network Error</string>
     <string name="parse_err">Parse Error</string>
+    
+    <!-- Article Details Screen -->
+    <string name="open_website">open website</string>
 </resources>

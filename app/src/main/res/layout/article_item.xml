@@ -18,14 +18,12 @@
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:clickable="true"
-            android:scaleType="fitXY"
-            android:src="@drawable/placeholder"/>
+            android:scaleType="fitXY"/>
 
         <TextView
             android:id="@+id/article_title_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="This is article title: Google buys IBM for the reason of what."
             android:textSize="18sp"
             android:textColor="#000"
             android:layout_marginRight="10dp"
@@ -35,7 +33,6 @@
             android:id="@+id/article_author_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="By: Andrew John"
             android:textSize="16sp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"/>
@@ -43,11 +40,8 @@
             android:id="@+id/article_publishDate_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="April 3, 2017"
             android:gravity="end"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_margin="10dp"/>
 
 
     </LinearLayout>

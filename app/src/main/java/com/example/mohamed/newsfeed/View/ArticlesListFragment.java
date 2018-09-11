@@ -1,6 +1,7 @@
 package com.example.mohamed.newsfeed.View;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -31,11 +33,11 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class ArticlesListFragment extends Fragment implements ArticlesFragmentPresenter.View{
+public class ArticlesListFragment extends Fragment implements ArticlesFragmentPresenter.View, RecyclerViewClickListener{
     private static final String TAG = ArticlesListFragment.class.getSimpleName();
 
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private ArticlesAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
     private ProgressBar loadingProgressBar;
@@ -43,11 +45,14 @@ public class ArticlesListFragment extends Fragment implements ArticlesFragmentPr
     private Context mContext;
     private ArticlesFragmentPresenter mPresenter;
 
+    List<Article> articleList;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this.getActivity();
         mPresenter = new ArticlesFragmentPresenter(this, mContext);
+        articleList = new ArrayList<>();
     }
 
 
@@ -74,9 +79,11 @@ public class ArticlesListFragment extends Fragment implements ArticlesFragmentPr
 
     @Override
     public void showArticlesList(List<Article> articles) {
+        articleList = articles;
         Log.v(TAG, "inside show articles list()");
         mAdapter = new ArticlesAdapter(mContext, articles);
         mRecyclerView.setAdapter(mAdapter);
+        mAdapter.setClickListener(this);
     }
 
     @Override
@@ -94,8 +101,13 @@ public class ArticlesListFragment extends Fragment implements ArticlesFragmentPr
         Toast.makeText(mContext, error, Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void hideErrorMsg() {
 
+    // When clicking on an article
+    @Override
+    public void onClick(View view, int position) {
+        final Article article = articleList.get(position);
+        Intent intent = new Intent(mContext, ArticleDetails.class);
+        intent.putExtra("article", article);
+        startActivity(intent);
     }
 }

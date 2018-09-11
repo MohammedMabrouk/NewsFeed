@@ -11,13 +11,11 @@ import java.util.List;
 
 public class ArticlesFragmentPresenter {
 
-    //private List<Article> articles;
     private View view;
     private Repository mRepository;
     private Context mContext;
 
     public ArticlesFragmentPresenter(View view, Context mContext){
-        //articles = new ArrayList<>();
         this.view = view;
         this.mContext = mContext;
         mRepository = new Repository(mContext, this);
@@ -26,7 +24,6 @@ public class ArticlesFragmentPresenter {
     public void getArticles(){
        view.showProgressBar();
        mRepository.getArticles();
-
     }
 
     public void showArticles(List<Article> articles){
@@ -52,6 +49,5 @@ public class ArticlesFragmentPresenter {
         void hideProgressBar();
 
         void showErrorMsg(String error);
-        void hideErrorMsg();
     }
 }

@@ -2,7 +2,9 @@ package com.example.mohamed.newsfeed.Model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Article {
+import java.io.Serializable;
+
+public class Article implements Serializable {
     private String author;
     private String title;
     private String description;

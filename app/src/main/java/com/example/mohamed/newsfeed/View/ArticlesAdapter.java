@@ -3,6 +3,7 @@ package com.example.mohamed.newsfeed.View;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,29 +17,22 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.MyViewHolder> {
+    private final static String TAG = ArticlesAdapter.class.getSimpleName();
 
     private Context mContext;
     private List<Article> articleList;
 
+    private RecyclerViewClickListener mListener;
 
     public ArticlesAdapter(Context mContext, List<Article> articleList) {
         this.mContext = mContext;
         this.articleList = articleList;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
-        public TextView title, author, publishDate;
-        public ImageView thumbnail;
-
-        public MyViewHolder(View view) {
-            super(view);
-            title = (TextView) view.findViewById(R.id.article_title_textView);
-            author = (TextView) view.findViewById(R.id.article_author_textView);
-            publishDate = (TextView) view.findViewById(R.id.article_publishDate_textView);
-            thumbnail = (ImageView) view.findViewById(R.id.article_thumbnail_imageView);
-        }
-
+    public void setClickListener(RecyclerViewClickListener mListener){
+        this.mListener = mListener;
     }
+
 
     @NonNull
     @Override
@@ -62,7 +56,27 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.MyView
                 .placeholder(R.drawable.placeholder)
                 .into(holder.thumbnail);
 
-        // set on click listener
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        public TextView title, author, publishDate;
+        public ImageView thumbnail;
+
+        public MyViewHolder(View view) {
+            super(view);
+            title = (TextView) view.findViewById(R.id.article_title_textView);
+            author = (TextView) view.findViewById(R.id.article_author_textView);
+            publishDate = (TextView) view.findViewById(R.id.article_publishDate_textView);
+            thumbnail = (ImageView) view.findViewById(R.id.article_thumbnail_imageView);
+
+            view.setOnClickListener(this);
+            thumbnail.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            mListener.onClick(view, getAdapterPosition());
+        }
     }
 
 
