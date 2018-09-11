@@ -1,4 +1,4 @@
-package com.example.mohamed.newsfeed;
+package com.example.mohamed.newsfeed.View;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.mohamed.newsfeed.Model.Article;
+import com.example.mohamed.newsfeed.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -56,7 +58,7 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.MyView
 
         // load article thumbnail image using picasso
         Picasso.get()
-                .load(article.getImageUrl())
+                .load(article.getImgUrl())
                 .placeholder(R.drawable.placeholder)
                 .into(holder.thumbnail);
 

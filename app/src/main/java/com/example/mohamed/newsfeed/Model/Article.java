@@ -1,28 +1,30 @@
-package com.example.mohamed.newsfeed;
+package com.example.mohamed.newsfeed.Model;
+
+import com.google.gson.annotations.SerializedName;
 
 public class Article {
     private String author;
     private String title;
     private String description;
     private String url;
-    private String imageUrl;
+    @SerializedName("urlToImage")
+    private String imgUrl;
+    @SerializedName("publishedAt")
     private String publishDate;
 
-    public Article(){
-
-    }
+    public Article(){}
 
     public Article(String author,
             String title,
             String description,
             String url,
-            String imageUrl,
+            String imgUrl,
             String publishDate){
         this.author = author;
         this.title = title;
         this.description = description;
         this.url = url;
-        this.imageUrl = imageUrl;
+        this.imgUrl = imgUrl;
         this.publishDate = publishDate;
     }
 
@@ -58,12 +60,12 @@ public class Article {
         return url;
     }
 
-    public void setImageUrl(String imageUrl){
-        this.imageUrl = imageUrl;
+    public void setImgUrl(String imgUrl){
+        this.imgUrl = imgUrl;
     }
 
-    public String getImageUrl(){
-        return imageUrl;
+    public String getImgUrl(){
+        return imgUrl;
     }
 
     public void setPublishDate(String publishDate){

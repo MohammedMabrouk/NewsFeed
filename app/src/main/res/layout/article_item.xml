@@ -26,11 +26,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="This is article title: Google buys IBM for the reason of what."
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textColor="#000"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp" />
         <TextView
             android:id="@+id/article_author_textView"
             android:layout_width="match_parent"

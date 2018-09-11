@@ -22,7 +22,7 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:titleTextColor="#fff"/>
 
-        <fragment android:name="com.example.mohamed.newsfeed.ArticlesListFragment"
+        <fragment android:name="com.example.mohamed.newsfeed.View.ArticlesListFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
