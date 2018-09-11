@@ -1,7 +1,6 @@
 package com.example.mohamed.newsfeed.Model;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.util.Log;
 
 import com.android.volley.AuthFailureError;
@@ -18,8 +17,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.mohamed.newsfeed.Presenter.ArticlesFragmentPresenter;
 import com.example.mohamed.newsfeed.R;
-import com.example.mohamed.newsfeed.View.ArticlesAdapter;
-import com.example.mohamed.newsfeed.View.ArticlesListFragment;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
@@ -28,8 +25,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Repository {
-    private static final String TAG = Repository.class.getSimpleName();
+public class ArticlesRepository {
+    private static final String TAG = ArticlesRepository.class.getSimpleName();
     private static final String ENDPOINT = "https://newsapi.org/v1/articles?source=the-next-web&apiKey=533af958594143758318137469b41ba9";
 
     private ArticlesFragmentPresenter mPresenter;
@@ -39,8 +36,7 @@ public class Repository {
     private RequestQueue mRequestQueue;
     private Gson gson;
 
-    public Repository(Context mContext, ArticlesFragmentPresenter mPresenter){
-        Log.v(TAG, "inside repository");
+    public ArticlesRepository(Context mContext, ArticlesFragmentPresenter mPresenter){
         this.mPresenter = mPresenter;
         this.mContext = mContext;
         articles = new ArrayList<>();
@@ -48,12 +44,10 @@ public class Repository {
 
         // Prepare Gson object
         GsonBuilder gsonBuilder = new GsonBuilder();
-        //gsonBuilder.setDateFormat("M/d/yy hh:mm a");
         gson = gsonBuilder.create();
     }
 
     public void getArticles(){
-        Log.v(TAG, "inside getArticles()");
         StringRequest request = new StringRequest(Request.Method.GET, ENDPOINT,
                 new Response.Listener<String>() {
                     @Override
@@ -66,12 +60,6 @@ public class Repository {
                             art = jsonResponse.get("articles").toString();
                             articles = Arrays.asList(gson.fromJson(art, Article[].class));
 
-                            Log.v(TAG, "success: " + response);
-                            if(articles.size() > 0){
-                                // Attach Articles to Adapter
-                                //mAdapter = new ArticlesAdapter(mContext, articles);
-                                //mRecyclerView.setAdapter(mAdapter);
-                            }
                             mPresenter.hideProgressBar();
                             mPresenter.showArticles(articles);
 

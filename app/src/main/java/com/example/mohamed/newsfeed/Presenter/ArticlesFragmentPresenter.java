@@ -1,24 +1,22 @@
 package com.example.mohamed.newsfeed.Presenter;
 
 import android.content.Context;
-import android.view.View;
 
 import com.example.mohamed.newsfeed.Model.Article;
-import com.example.mohamed.newsfeed.Model.Repository;
+import com.example.mohamed.newsfeed.Model.ArticlesRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ArticlesFragmentPresenter {
 
     private View view;
-    private Repository mRepository;
+    private ArticlesRepository mRepository;
     private Context mContext;
 
     public ArticlesFragmentPresenter(View view, Context mContext){
         this.view = view;
         this.mContext = mContext;
-        mRepository = new Repository(mContext, this);
+        mRepository = new ArticlesRepository(mContext, this);
     }
 
     public void getArticles(){

@@ -47,8 +47,11 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.MyView
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         Article article = articleList.get(position);
         holder.title.setText(article.getTitle());
-        holder.author.setText(article.getAuthor());
-        holder.publishDate.setText(article.getPublishDate());
+        holder.author.setText(mContext.getResources().getString(R.string.author_str, article.getAuthor()));
+
+        holder.publishDate.setText(com.example.mohamed.newsfeed.Utls.DateFormat.changeDateFormat(article.getPublishDate()
+                , com.example.mohamed.newsfeed.Utls.DateFormat.articleDateFormat
+                , com.example.mohamed.newsfeed.Utls.DateFormat.layoutDateFormat));
 
         // load article thumbnail image using picasso
         Picasso.get()
@@ -83,5 +86,9 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.MyView
     @Override
     public int getItemCount() {
         return articleList.size();
+    }
+
+    public interface RecyclerViewClickListener {
+        void onClick(View view, int position);
     }
 }

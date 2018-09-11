@@ -33,7 +33,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class ArticlesListFragment extends Fragment implements ArticlesFragmentPresenter.View, RecyclerViewClickListener{
+public class ArticlesListFragment extends Fragment implements ArticlesFragmentPresenter.View, ArticlesAdapter.RecyclerViewClickListener{
     private static final String TAG = ArticlesListFragment.class.getSimpleName();
 
     private RecyclerView mRecyclerView;

@@ -19,33 +19,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp">
+
         <ImageView
             android:id="@+id/article_thumbnail_imageView"
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:clickable="true"
-            android:scaleType="fitXY"
-            android:src="@drawable/placeholder" />
+            android:scaleType="fitXY"/>
 
         <TextView
             android:id="@+id/article_publishDate_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignRight="@id/article_thumbnail_imageView"
             android:layout_alignBottom="@id/article_thumbnail_imageView"
-            android:layout_marginRight="10dp"
+            android:layout_alignRight="@id/article_thumbnail_imageView"
             android:layout_marginBottom="10dp"
-            android:text="11/9/2018"
-            />
+            android:layout_marginRight="10dp"
+            android:text="@{article.publishDate}"
+            android:textColor="#fff"/>
 
     </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
         android:paddingLeft="16dp"
-        android:paddingBottom="16dp">
+        android:paddingRight="16dp">
 
         <TextView
             android:id="@+id/article_title_textView"
@@ -54,37 +55,37 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
-            android:text="Title"
+            android:text="@{article.title}"
             android:textColor="#000"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/article_author_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/article_title_textView"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:text="author"
-            android:textSize="16sp"
-            android:layout_below="@id/article_title_textView"/>
+            android:text="@{article.author}"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/article_description_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/article_author_textView"
             android:layout_margin="10dp"
-            android:text="description"
-            android:layout_below="@id/article_author_textView"/>
+            android:text="@{article.description}" />
 
         <Button
+            android:id="@+id/open_website_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
+            android:layout_alignParentBottom="true"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="20dp"
             android:text="@string/open_website"
-            android:textAllCaps="true"
-            android:layout_alignParentBottom="true"/>
+            android:textAllCaps="true" />
     </RelativeLayout>
 
 </LinearLayout>

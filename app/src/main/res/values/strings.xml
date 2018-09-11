@@ -21,4 +21,5 @@
     
     <!-- Article Details Screen -->
     <string name="open_website">open website</string>
+    <string name="author_str">By %1$s</string>
 </resources>
